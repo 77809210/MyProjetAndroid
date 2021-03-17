@@ -18,9 +18,9 @@ import java.net.URL;
 
 public class AsyncBitmapDownloader extends AsyncTask<String, Void, Bitmap> {
 
-    MyAdapter adapter_ = null;
+    RecyclerViewAdapter adapter_ = null;
 
-    public AsyncBitmapDownloader(MyAdapter adapter) {
+    public AsyncBitmapDownloader(RecyclerViewAdapter adapter) {
         adapter_ = adapter;
     }
 

@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,13 +26,14 @@ import java.net.URL;
 public class AsyncFoodJsonData extends AsyncTask<String, Void, JSONObject> {
 
     public static JSONObject json;
-    MyAdapter adapter= null;
+    RecyclerViewAdapter adapter;
+    public static RecyclerViewAdapter adapter1;
     private AppCompatActivity myActivity;
+    private RecyclerView myRecyclerView;
     DatabaseHelper mDatabaseHelper;
 
-    public AsyncFoodJsonData(AppCompatActivity mainActivity, MyAdapter adp,DatabaseHelper mDatabaH) {
+    public AsyncFoodJsonData(AppCompatActivity mainActivity,DatabaseHelper mDatabaH) {
         this.myActivity = mainActivity;
-        this.adapter = adp;
         this.mDatabaseHelper = mDatabaH;
     }
 
@@ -63,37 +66,32 @@ public class AsyncFoodJsonData extends AsyncTask<String, Void, JSONObject> {
         return json; // returns the result
     }
     @Override
-    protected void onPostExecute(JSONObject s) { //this function iterate over all images JsonArray contained in received JSONObject
-
-        ListView list = (ListView)myActivity.findViewById(R.id.list);
-        MyAdapter tableau = new MyAdapter(list.getContext());
-        list.setAdapter(tableau);
-
-        // For testing purpose
-        //Bitmap largeIcon = BitmapFactory.decodeResource(myActivity.getResources(), R.drawable.test);
-        //tableau.add(largeIcon);
+    protected void onPostExecute(JSONObject s) {
 
         try {
             JSONArray item = s.getJSONArray("categories");
-            for (int i = 0; i<item.length(); i++)
+            for (int i = 0; i<item.length(); i++) //i foreach the result of my Json object in order to to fill my list
             {
 
                 JSONObject fe = item.getJSONObject(i);
-                String urlimage = fe.getString("strCategoryThumb");
-                String categories = fe.getString("strCategory");
+                String urlimage = fe.getString("strCategoryThumb"); // i get the url of image
+                String categories = fe.getString("strCategory");// i get categorie
                 String description = fe.getString("strCategoryDescription");
-                this.mDatabaseHelper.addData(categories,urlimage,description);
-                Log.i("JFL", "Adding to adapter url: " + urlimage);
-                // Downloading image
-                //AsyncBitmapDownloader abd = new AsyncBitmapDownloader(tableau);
-              // abd.execute(urlimage);
+                this.mDatabaseHelper.addData(categories,urlimage,description);//there i add data to the table food_table of my database
+                Food food = new Food(categories,urlimage,description);
+                RecyclerViewAdapter.mData.add(food);
 
             }
+            myRecyclerView = (RecyclerView) myActivity.findViewById(R.id.recyclerView);//there i get the instance of my recyclerView
+            adapter = new RecyclerViewAdapter(myActivity,RecyclerViewAdapter.mData);
+            adapter1 = new RecyclerViewAdapter(myActivity,RecyclerViewAdapter.mData);////i link my main activity with my adapter
+            myRecyclerView.setLayoutManager(new GridLayoutManager(myActivity,1));/*layout manager is responsible for letting the recyclerView know when
+            to recycle a child view once it's gone out of scope*/
+            myRecyclerView.setAdapter(adapter); //there i link my adapter with recyclerView in order to bind datasets to views that be displayed in the windows
             Cursor data = mDatabaseHelper.getData();
-            while(data.moveToNext())
+            while(data.moveToNext())//i foreach my table food in order to recover url image and add it in list
             {
-                AsyncBitmapDownloader abd = new AsyncBitmapDownloader(tableau);
-                abd.execute(data.getString(2));
+                RecyclerViewAdapter.dd(data.getString(2));
             }
 
         } catch (JSONException e) {
@@ -109,10 +107,6 @@ public class AsyncFoodJsonData extends AsyncTask<String, Void, JSONObject> {
             sb.append(line);
         }
         is.close();
-
-        // Extracting the JSON object from the String
-        //String jsonextracted = sb.substring("jsonFlickrFeed(".length(), sb.length() - 1);
-        //Log.i("CIO", jsonextracted);
         return sb.toString();
     }
 

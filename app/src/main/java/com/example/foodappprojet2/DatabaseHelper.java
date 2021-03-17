@@ -14,10 +14,14 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
     private static final String COL2 = "strCategory";
     private static final String COL3 = "strCategoryThumb";
     private static final String COL4 = "strCategoryDescription";
+
     public DatabaseHelper(Context context)
     {
         super(context, TABLE_NAME,null,1);
     }
+    /*
+    create a table to my database
+   */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE "+TABLE_NAME+ "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "+COL2 +" TEXT,"+COL3 +" TEXT,"+COL4 +" TEXT)";
@@ -29,6 +33,9 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
        db.execSQL("DROP TABLE IF EXISTS " +TABLE_NAME);
        onCreate(db);
     }
+    /*
+    add data to the database
+    */
     public boolean addData(String strCategory, String strCategoryThumb, String strCategoryDescription)
     {
         SQLiteDatabase db = this.getWritableDatabase();

@@ -3,12 +3,16 @@ package com.example.foodappprojet2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class infosActivity extends AppCompatActivity {
-    private TextView nameRecipe;
-    private TextView ingredient;
+    private TextView name;
+    private ImageView imageURL;
     private TextView description;
 
 
@@ -16,17 +20,19 @@ public class infosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infos);
-        nameRecipe = (TextView)findViewById(R.id.named);
-        ingredient = (TextView)findViewById(R.id.ingredients);
+        name = (TextView)findViewById(R.id.named);
+        imageURL = (ImageView)findViewById(R.id.imageD);
         description = (TextView)findViewById(R.id.description);
 
         Intent intent = getIntent();
-        String Title = intent.getExtras().getString("RecipeName");
-        String Ingredients = intent.getExtras().getString("Ingredients");
+        String Title = intent.getExtras().getString("Name");
+        String Images = intent.getExtras().getString("ImageD");
         String Description = intent.getExtras().getString("descriptions");
 
-        nameRecipe.setText(Title);
-        ingredient.setText(Ingredients);
+        name.setText(Title);
+        AsyncBitmapDownloader asyc =  new AsyncBitmapDownloader(AsyncFoodJsonData.adapter1);
+        Bitmap bitmap = asyc.doInBackground(Images);
+        imageURL.setImageBitmap(bitmap);
         description.setText(Description);
     }
 }

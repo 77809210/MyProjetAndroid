@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/text_recipe"
-            android:text="RECIPENAME"
+            android:text="CATEGORIES OF FOOD"
             android:layout_marginTop="10dp"
             android:textSize="21sp"
             android:textStyle="bold"/>
@@ -32,13 +32,13 @@
                 android:text="name"
                 android:textSize="20sp"/>
 
-            <TextView
-                android:id="@+id/ingredients"
+            <ImageView
+                android:id="@+id/imageD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="18dp"
                 android:layout_marginTop="20dp"
-                android:text="ingredients"
+                android:text="Image"
                 android:textSize="20sp" />
             <TextView
                 android:id="@+id/description"

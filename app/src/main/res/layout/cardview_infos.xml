@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="190dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     android:clickable="true"
     app:cardCornerRadius="4dp"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:foreground="?android:attr/selectableItemBackground"
+    android:id="@+id/cardcontent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:layout_marginTop="10dp"
-            android:background="@color/design_default_color_primary_dark"
-            android:scaleType="centerCrop"/>
-        <Button
+            android:scaleType="centerCrop"
+            android:id="@+id/imageV"/>
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/app_name"
+            android:text="app_name"
             android:textSize="13sp"
-            android:textcolor="#2d2d2D"/>
+            android:id="@+id/textI"/>
 
     </LinearLayout>
 
