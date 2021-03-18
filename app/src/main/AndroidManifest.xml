@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodAppProjet2">
-        <activity android:name=".infosActivity"></activity>
+        <activity android:name=".categories"></activity>
+        <activity android:name=".infosActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
