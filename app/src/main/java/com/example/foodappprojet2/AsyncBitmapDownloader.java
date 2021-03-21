@@ -23,6 +23,7 @@ public class AsyncBitmapDownloader extends AsyncTask<String, Void, Bitmap> {
     public AsyncBitmapDownloader(RecyclerViewAdapter adapter) {
         adapter_ = adapter;
     }
+    public AsyncBitmapDownloader() {}
 
     @Override
     protected Bitmap doInBackground(String... strings) {
@@ -44,13 +45,12 @@ public class AsyncBitmapDownloader extends AsyncTask<String, Void, Bitmap> {
             if (urlConnection != null)
                 urlConnection.disconnect();
         }
+        RadomFood.bitmap = bm;
         return bm;
     }
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        //Log.i("CIO", "Image received !");
-        adapter_.add(bitmap);
-        adapter_.notifyDataSetChanged();
+
     }
 }

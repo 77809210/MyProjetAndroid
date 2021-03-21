@@ -7,14 +7,14 @@ public class Food {
     private String image;
     private String description ;
 
-    public Food(int id, String name,String image, String description)
+    public Food(int id, String name, String image, String description)
     {
         this.id = id;
         this.name = name;
         this.image = image;
         this.description = description;
     }
-    public Food( String name,String image, String description)
+    public Food(String name, String image, String description)
     {
         this.name = name;
         this.image = image;

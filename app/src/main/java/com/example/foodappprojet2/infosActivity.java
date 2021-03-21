@@ -18,6 +18,7 @@ public class infosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Bitmap bitmap;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infos);
         name = (TextView)findViewById(R.id.named);
@@ -31,7 +32,7 @@ public class infosActivity extends AppCompatActivity {
 
         name.setText(Title);
         AsyncBitmapDownloader asyc =  new AsyncBitmapDownloader(AsyncFoodJsonData.adapter1);
-        Bitmap bitmap = asyc.doInBackground(Images);
+        bitmap = asyc.doInBackground(Images);
         imageURL.setImageBitmap(bitmap);
         description.setText(Description);
     }

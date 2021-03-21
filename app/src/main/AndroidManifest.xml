@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodAppProjet2">
-        <activity android:name=".categories"></activity>
+        <activity android:name=".FoodInfos"></activity>
+        <activity android:name=".searchName" />
+        <activity android:name=".searchIngredient" />
+        <activity android:name=".RadomFood" />
+        <activity android:name=".categories" />
         <activity android:name=".infosActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -67,12 +67,11 @@ public class AsyncFoodJsonData extends AsyncTask<String, Void, JSONObject> {
     }
     @Override
     protected void onPostExecute(JSONObject s) {
-
+        RecyclerViewAdapter.mData.clear();
         try {
             JSONArray item = s.getJSONArray("categories");
             for (int i = 0; i<item.length(); i++) //i foreach the result of my Json object in order to to fill my list
             {
-
                 JSONObject fe = item.getJSONObject(i);
                 String urlimage = fe.getString("strCategoryThumb"); // i get the url of image
                 String categories = fe.getString("strCategory");// i get categorie
@@ -80,14 +79,16 @@ public class AsyncFoodJsonData extends AsyncTask<String, Void, JSONObject> {
                 this.mDatabaseHelper.addData(categories,urlimage,description);//there i add data to the table food_table of my database
                 Food food = new Food(categories,urlimage,description);
                 RecyclerViewAdapter.mData.add(food);
-
+                RecyclerViewAdapter.mData2.add(food);
             }
             myRecyclerView = (RecyclerView) myActivity.findViewById(R.id.recyclerView);//there i get the instance of my recyclerView
+            myRecyclerView.setHasFixedSize(true);
             adapter = new RecyclerViewAdapter(myActivity,RecyclerViewAdapter.mData);
-            adapter1 = new RecyclerViewAdapter(myActivity,RecyclerViewAdapter.mData);////i link my main activity with my adapter
+            adapter1 = new RecyclerViewAdapter(myActivity,RecyclerViewAdapter.mData);//i link my main activity with my adapter
             myRecyclerView.setLayoutManager(new GridLayoutManager(myActivity,1));/*layout manager is responsible for letting the recyclerView know when
             to recycle a child view once it's gone out of scope*/
             myRecyclerView.setAdapter(adapter); //there i link my adapter with recyclerView in order to bind datasets to views that be displayed in the windows
+            myRecyclerView.setAdapter(adapter1);
             Cursor data = mDatabaseHelper.getData();
             while(data.moveToNext())//i foreach my table food in order to recover url image and add it in list
             {

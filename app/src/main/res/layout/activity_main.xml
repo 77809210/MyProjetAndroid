@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/card_background"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity">
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -18,7 +17,6 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_margin="20dp"/>
-
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -47,19 +45,16 @@
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_food" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="All  food"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -75,26 +70,22 @@
             android:layout_margin="20dp"
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_random" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ingredient"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -110,26 +101,22 @@
             app:cardElevation="8dp"
             android:layout_margin="20dp"
             app:cardUseCompatPadding="true">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_search_all" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Search"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -145,26 +132,22 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             app:cardUseCompatPadding="true">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical">
-
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_category" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" categories"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </GridLayout>

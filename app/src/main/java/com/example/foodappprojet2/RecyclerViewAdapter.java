@@ -3,6 +3,7 @@ package com.example.foodappprojet2;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -23,16 +25,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context mContext;
     public static  ArrayList<Bitmap> myList = new ArrayList<Bitmap>();
-    public static List<Food> mData = new ArrayList<>();
+    public static ArrayList<Food> mData = new ArrayList<>();
+    public static ArrayList<Food> mData2 = new ArrayList<>();
     public static List<String> listURL = new ArrayList<>();
 
 
-    public RecyclerViewAdapter(Context context,List<Food> foodList)
+    public RecyclerViewAdapter(Context context,ArrayList<Food> foodList)
     {
         this.mContext = context;
         this.mData = foodList;
-
-
     }
     @NonNull
     @Override
@@ -45,7 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.MyHolder holder, int position) {
-        Picasso.with(mContext).load(listURL.get(position)).into(holder.imageView);
+        Picasso.with(mContext).load(mData.get(position).getImage()).into(holder.imageView);
         holder.name.setText(mData.get(position).getName());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +68,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
     //the ViewHolder get out of scope(screen)
     public class MyHolder extends RecyclerView.ViewHolder { //this method is hepful to link my recyclerViewAdapter with my cardiew_infos.xml
+
         TextView name;
         CardView cardView;
         ImageView imageView;
@@ -83,5 +85,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static void dd(String url)
     {
         listURL.add(url);
+    }
+
+    public void filterList(ArrayList<Food> filteredList)
+    {
+        mData = filteredList;
+        this.notifyDataSetChanged();
     }
 }

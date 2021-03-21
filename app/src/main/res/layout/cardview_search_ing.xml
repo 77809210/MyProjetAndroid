@@ -7,7 +7,7 @@
     android:clickable="true"
     app:cardCornerRadius="4dp"
     android:foreground="?android:attr/selectableItemBackground"
-    android:id="@+id/cardcontent">
+    android:id="@+id/cardcontentSearchI">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,13 +17,13 @@
             android:layout_height="160dp"
             android:layout_marginTop="10dp"
             android:scaleType="centerCrop"
-            android:id="@+id/imageV"/>
+            android:id="@+id/imageS"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="app_name"
             android:textSize="13sp"
-            android:id="@+id/textI"/>
+            android:id="@+id/textS"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
