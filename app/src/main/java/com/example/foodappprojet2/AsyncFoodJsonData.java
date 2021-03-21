@@ -81,7 +81,7 @@ public class AsyncFoodJsonData extends AsyncTask<String, Void, JSONObject> {
                 RecyclerViewAdapter.mData.add(food);
                 RecyclerViewAdapter.mData2.add(food);
             }
-            myRecyclerView = (RecyclerView) myActivity.findViewById(R.id.recyclerView);//there i get the instance of my recyclerView
+            myRecyclerView = (RecyclerView) myActivity.findViewById(R.id.recyclerViewF);//there i get the instance of my recyclerView
             myRecyclerView.setHasFixedSize(true);
             adapter = new RecyclerViewAdapter(myActivity,RecyclerViewAdapter.mData);
             adapter1 = new RecyclerViewAdapter(myActivity,RecyclerViewAdapter.mData);//i link my main activity with my adapter

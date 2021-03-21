@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -88,7 +90,7 @@ public class AsyncRandomFood extends AsyncTask<String, Void, JSONObject> {
                 String name = fe.getString("strMeal"); // i get the name of radom food
                 String categories = fe.getString("strCategory");// i get categorie
                 String area = fe.getString("strArea"); //the area
-                RadomFood.imageURL = fe.getString("strMealThumb"); // i get the url of image
+                String imageURL = fe.getString("strMealThumb"); // i get the url of image
                 String ingredient1 = fe.getString("strIngredient1");// i get ingredient1
                 String ingredient2 = fe.getString("strIngredient2");
                 String ingredient3 = fe.getString("strIngredient3");
@@ -103,6 +105,7 @@ public class AsyncRandomFood extends AsyncTask<String, Void, JSONObject> {
                 ingredientR4.setText(ingredient4);
                 ingredientR5.setText(ingredient5);
                 areaT.setText(area);
+                Picasso.with(myActivity).load(imageURL).into(image);
             }
         } catch (JSONException e) {
             e.printStackTrace();

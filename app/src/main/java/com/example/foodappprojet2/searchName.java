@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -20,7 +21,8 @@ public class searchName extends AppCompatActivity {
         setContentView(R.layout.activity_search_name);
         btn = findViewById(R.id.searchName);
         search = findViewById(R.id.editSearchByName);
-        myRecyclerView = findViewById(R.id.recyclerViewSearchByName);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportFragmentManager().beginTransaction().replace(R.id.searchNameMain,new datafragment()).commit();
         me = this;
         btn.setOnClickListener(new View.OnClickListener() { // when We click to this button using the event that listens a redirection is made to the SearchName Activity
             @Override
@@ -29,7 +31,6 @@ public class searchName extends AppCompatActivity {
 
                 String url = "https://www.themealdb.com/api/json/v1/1/search.php?s="+test;
                 new AsynSearchByName(me).execute(url);
-                search.setText("");
             }
 
         });

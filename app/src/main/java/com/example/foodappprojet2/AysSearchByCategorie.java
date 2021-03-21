@@ -81,9 +81,8 @@ public class AysSearchByCategorie extends AsyncTask<String, Void, JSONObject> {
                     resultIngredientSearch rslt = new resultIngredientSearch(name, urlimage);
                     RecyclerViewAdapterIng.mData.add(rslt);
                 }
-                myRecyclerView = (RecyclerView) myActivity.findViewById(R.id.recyclerViewSearchByIngredient);
+                myRecyclerView = (RecyclerView) myActivity.findViewById(R.id.SearchByIngredient);
                 adapter = new RecyclerViewAdapterIng(RecyclerViewAdapterIng.mData, myActivity);
-                myRecyclerView.setLayoutManager(new GridLayoutManager(myActivity, 1));
                 myRecyclerView.setAdapter(adapter);
             } catch (JSONException e) {
                 e.printStackTrace();

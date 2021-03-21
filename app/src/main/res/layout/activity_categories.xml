@@ -5,18 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".categories"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/maincontainer">
     <EditText
         android:id="@+id/editSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipToPadding="true"
-        android:scrollbars="vertical"
-        android:clipChildren="false"
-        android:id="@+id/recyclerView"/>
 </LinearLayout>
 

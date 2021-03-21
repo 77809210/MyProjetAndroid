@@ -3,6 +3,7 @@ package com.example.foodappprojet2;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,8 @@ public class categories extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
         searchText = findViewById(R.id.editSearch);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportFragmentManager().beginTransaction().replace(R.id.maincontainer,new datafragment()).commit();
         this.mDtabaseHelper = new DatabaseHelper(this);
          task = new AsyncFoodJsonData(this,mDtabaseHelper);// there i call the asynchrone task witch get the list of url from MealDB server
         task.execute(url); // i execute the url
@@ -48,7 +51,7 @@ public class categories extends AppCompatActivity {
             }
         });
     }
-    private void filter(String str)
+     private void filter(String str)
     {
         filteredList = new ArrayList<Food>();
         for(Food item: RecyclerViewAdapter.mData)
